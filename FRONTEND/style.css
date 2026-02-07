@@ -1,0 +1,2367 @@
+/* Reset et configuration de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image du Keffieh en haut à gauche */
+.kufiya-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.kufiya-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Logo drapeau palestinien en HAUT À DROITE */
+.flag-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ou contain */
+}
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.flag-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.auth-container {
+    background-color: transparent;
+    padding: 40px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Titre "Login" */
+.auth-title {
+    font-size: 5rem;
+    color: #5a1f1f;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Sections de formulaire */
+.form-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Texte de bienvenue (Login uniquement) */
+.welcome-text {
+    font-size: 2.8rem;
+    color: #2d1810;
+    margin-bottom: 50px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Label "Sign in:" (Register uniquement) */
+.signin-label {
+    display: block;
+    font-size: 2.2rem;
+    color: #2d1810;
+    margin-bottom: 30px;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* Formulaire */
+.auth-form {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.4rem;
+    color: #2d1810;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+}
+
+.form-group input::placeholder {
+    color: #b0b0b0;
+    font-size: 1.3rem;
+}
+
+.form-group input:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Style pour le select (menu déroulant) */
+.form-group select {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+    color: #b0b0b0; /* Couleur grise pour le placeholder */
+    cursor: pointer;
+    appearance: none; /* Enlève le style par défaut */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d1810' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 20px;
+    padding-right: 50px;
+}
+
+.form-group select:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Quand une option est sélectionnée, changer la couleur */
+.form-group select:valid {
+    color: #2d1810;
+}
+
+/* Options du select */
+.form-group select option {
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: white;
+    color: #2d1810;
+}
+
+/* Option disabled (placeholder) */
+.form-group select option:disabled {
+    color: #b0b0b0;
+}
+
+/* Boutons de connexion sociale (Login uniquement) */
+.social-buttons {
+    display: flex;
+    gap: 30px;
+    margin: 50px 0 30px 0;
+}
+
+.social-buttons button {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.3px;
+    border: 2px solid #2d1810;
+    border-radius: 50px;
+    background-color: white;
+    color: #2d1810;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-buttons button:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Bouton Enter (Register uniquement) */
+.btn-enter {
+    padding: 18px 60px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    border: none;
+    border-radius: 50px;
+    background-color: #5a1f1f;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(90, 31, 31, 0.3);
+}
+
+.btn-enter:hover {
+    background-color: #7a2f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(90, 31, 31, 0.4);
+}
+
+.btn-enter:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(90, 31, 31, 0.3);
+}
+
+/* Liens de changement de formulaire */
+.switch-link {
+    text-align: left;
+    font-size: 1.3rem;
+    color: #2d1810;
+    margin-top: 25px;
+}
+
+.switch-link span {
+    margin-right: 10px;
+}
+
+.switch-link a {
+    color: #000000;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .flag-logo {
+        right: 40px;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 40px 20px;
+    }
+
+    .auth-title {
+        font-size: 3rem;
+    }
+
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+
+    .signin-label {
+        font-size: 1.8rem;
+    }
+
+    .kufiya-corner {
+        width: 250px;
+        height: 250px;
+    }
+
+    .flag-logo {
+        width: 120px;
+        height: 120px;
+        right: 20px;
+        top: 15px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-title {
+        font-size: 2.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+
+    .signin-label {
+        font-size: 1.5rem;
+    }
+
+    .btn-enter {
+        width: 100%;
+    }
+}
+/* Reset et configuration de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding: 40px 0;
+}
+
+/* Image du Keffieh en haut à gauche */
+.kufiya-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.kufiya-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Logo drapeau palestinien en haut à droite */
+.flag-logo {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+
+.flag-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.main-container {
+    background-color: transparent;
+    padding: 20px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+/* Titre de la page */
+.page-title {
+    font-size: 4rem;
+    color: #2d1810;
+    margin-bottom: 60px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Header Project details */
+.project-details-header {
+    background-color: #d4d4d4;
+    border-radius: 25px;
+    padding: 25px 0;
+    margin-bottom: 50px;
+    margin-left: 280px;
+    margin-right: 280px;
+    text-align: center;
+}
+
+.project-details-header h2 {
+    font-size: 2.5rem;
+    color: #2d1810;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Formulaire */
+.project-form {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Lignes du formulaire (Name project, location, status) */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    gap: 30px;
+}
+
+.form-label {
+    font-size: 1.8rem;
+    color: #5a1f1f;
+    font-weight: 400;
+    background-color: #e8e8e8;
+    padding: 18px 35px;
+    border-radius: 15px;
+    min-width: 250px;
+    text-align: center;
+}
+
+.form-input {
+    flex: 1;
+    padding: 18px 30px;
+    font-size: 1.2rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+}
+
+.form-input:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Section needs */
+.needs-section {
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.needs-label {
+    font-size: 1.8rem;
+    color: #5a1f1f;
+    font-weight: 400;
+    background-color: #e8e8e8;
+    padding: 18px 35px;
+    border-radius: 15px;
+    min-width: 250px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.needs-inputs {
+    flex: 1;
+}
+
+.need-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 30px;
+}
+
+.need-label {
+    font-size: 1.6rem;
+    color: #888888;
+    font-weight: 400;
+    min-width: 150px;
+    text-align: left;
+}
+
+.need-input {
+    flex: 1;
+    padding: 18px 30px;
+    font-size: 1.2rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+}
+
+.need-input:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Conteneur et bouton Submit */
+.submit-container {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.btn-submit {
+    min-width: 300px;
+    padding: 20px 70px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    border: none;
+    border-radius: 15px;
+    background-color: #2d5047;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(45, 80, 71, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-submit:hover {
+    background-color: #3a6559;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(45, 80, 71, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(45, 80, 71, 0.3);
+}
+
+/* Icône maison en bas à droite */
+.home-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    width: 90px;
+    height: 90px;
+    z-index: 100;
+}
+
+.home-icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #5a1f1f;
+    transition: all 0.3s ease;
+}
+
+.home-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.home-icon a:hover {
+    transform: scale(1.1);
+    color: #7a2f2f;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .flag-logo {
+        right: 40px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .main-container {
+        padding: 20px 40px;
+    }
+
+    .page-title {
+        font-size: 3.2rem;
+    }
+
+    .project-details-header {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    .project-details-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .form-label,
+    .needs-label {
+        min-width: 200px;
+        font-size: 1.5rem;
+        padding: 15px 25px;
+    }
+
+    .need-label {
+        font-size: 1.4rem;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .project-details-header {
+        padding: 20px 0;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .project-details-header h2 {
+        font-size: 2rem;
+    }
+
+    .kufiya-corner {
+        width: 250px;
+        height: 250px;
+    }
+
+    .flag-logo {
+        width: 120px;
+        height: 120px;
+        right: 20px;
+        top: 15px;
+    }
+
+    .form-row,
+    .need-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .needs-section {
+        flex-direction: column;
+    }
+
+    .form-label,
+    .needs-label {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .form-input,
+    .need-input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .need-label {
+        padding-left: 0;
+    }
+
+    .home-icon {
+        width: 70px;
+        height: 70px;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .project-details-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-label,
+    .needs-label {
+        font-size: 1.3rem;
+    }
+
+    .need-label {
+        font-size: 1.2rem;
+    }
+
+    .form-input,
+    .need-input {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    .home-icon {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .btn-submit {
+        min-width: 250px;
+        padding: 18px 50px;
+        font-size: 1.5rem;
+    }
+}
+:root{
+  --bg: #ffffff;
+  --green: #163f2e;
+  --text: rgba(0,0,0,.75);
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page{
+  min-height: 100vh;
+  padding: 26px 18px 50px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.title{
+  margin: 0;
+  text-align:center;
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  color: var(--green);
+}
+
+.subtitle{
+  margin: 32px 0 0 0;
+  text-align:center;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: rgba(22,63,46,.85);
+}
+
+/* grid layout */
+/* ============================= */
+/* GRID PRINCIPALE               */
+/* ============================= */
+/* ================= GRID ================= */
+.grid {
+  width: min(1100px, 92vw);
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 44px 60px;
+}
+
+/* ============== BOX ==================== */
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ============== PILL (CLIQUABLE) ======= */
+.pill {
+  all: unset;                           /* reset bouton */
+  background-color: var(--green, #1f8a70);
+  color: #ffffff;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  padding: 14px 40px;
+  border-radius: 16px;
+  letter-spacing: 0.6px;
+  cursor: pointer;                     /* 👈 cliquable */
+  transition: transform .15s ease, box-shadow .15s ease;
+  user-select: none;
+  text-align: center;
+}
+
+/* Hover pill */
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+
+/* ============== IMAGE BUTTON =========== */
+.img-card {
+  all: unset;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  border: 2px solid rgba(22,63,46,.85);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+  display: block;
+}
+
+/* Image inside button */
+.img-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;               /* 👈 clic reste sur bouton */
+}
+
+/* Hover image button */
+.img-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+
+/* ============== MESSAGE ================ */
+.msg {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: rgba(0,0,0,.55);
+}
+
+
+/* -----------------------------
+   REAL IMAGES (kuffiyeh + logo)
+------------------------------ */
+.kuffiyeh{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.logo{
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; gap: 38px; }
+  .img-card img{ height: 230px; }
+
+  .kuffiyeh{ width: 200px; }
+  .logo{ width: 90px; height: 90px; }
+}
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    width: 100%;
+    padding-right: 40px; /* espace pour le bouton */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+/* Reset et configuration de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding: 40px 0 100px 0;
+}
+
+/* Image du Keffieh en haut à gauche */
+.kufiya-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.kufiya-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Logo drapeau palestinien en haut à droite */
+.flag-logo {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+
+.flag-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.main-container {
+    background-color: transparent;
+    padding: 20px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+/* Titre de la page */
+.page-title {
+    font-size: 3.5rem;
+    color: #2d1810;
+    margin-bottom: 50px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Header Add project */
+.project-header {
+    background-color: #d4d4d4;
+    border-radius: 20px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.project-header h2 {
+    font-size: 2.2rem;
+    color: #2d1810;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Formulaire */
+.project-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Groupes de formulaire */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+    text-align: center;
+}
+
+.form-input::placeholder {
+    color: #999999;
+    font-size: 1.1rem;
+}
+
+.form-input:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Status et Upload Image sur la même ligne */
+.status-upload-row {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.status-upload-row .form-group {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+/* Select pour Status */
+.form-select {
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #e8e8e8;
+    font-family: 'Georgia', serif;
+    color: #5a1f1f;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a1f1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    padding-right: 45px;
+    border: none;
+}
+
+.form-select:focus {
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+.form-select option {
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: white;
+    color: #2d1810;
+}
+
+/* Upload Image Button */
+.upload-btn {
+    display: block;
+    width: 100%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    background-color: #ffffff;
+    color: #999999;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
+}
+
+.upload-btn:hover {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Titre Needs */
+.needs-title {
+    font-size: 2.2rem;
+    color: #5a1f1f;
+    font-weight: 400;
+    margin: 40px 0 20px 0;
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Section de besoin (Human, Materiel, Voulunteer) */
+.need-section {
+    margin-bottom: 35px;
+}
+
+.need-category {
+    font-size: 1.8rem;
+    color: #2d1810;
+    font-weight: 400;
+    margin-bottom: 15px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.need-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.need-input {
+    width: 48%;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    border: 3px solid #2d1810;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+    text-align: center;
+}
+
+.need-input::placeholder {
+    color: #999999;
+    font-size: 1.1rem;
+}
+
+.need-input:focus {
+    border-color: #5a1f1f;
+    box-shadow: 0 0 0 3px rgba(90, 31, 31, 0.1);
+}
+
+/* Submit Button */
+.submit-container {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.btn-submit {
+    padding: 20px 80px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    border: none;
+    border-radius: 15px;
+    background-color: #5a1f1f;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(90, 31, 31, 0.3);
+}
+
+.btn-submit:hover {
+    background-color: #7a2f2f;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(90, 31, 31, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(90, 31, 31, 0.3);
+}
+
+/* Icône maison en bas à droite */
+.home-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    width: 90px;
+    height: 90px;
+    z-index: 100;
+}
+
+.home-icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #5a1f1f;
+    transition: all 0.3s ease;
+}
+
+.home-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.home-icon a:hover {
+    transform: scale(1.1);
+    color: #7a2f2f;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .flag-logo {
+        right: 40px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .main-container {
+        padding: 20px 40px;
+    }
+
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .project-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .project-header {
+        padding: 18px 0;
+        margin-bottom: 30px;
+    }
+
+    .project-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .kufiya-corner {
+        width: 250px;
+        height: 250px;
+    }
+
+    .flag-logo {
+        width: 120px;
+        height: 120px;
+        right: 20px;
+        top: 15px;
+    }
+
+    .status-upload-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .needs-title {
+        font-size: 2rem;
+    }
+
+    .need-category {
+        font-size: 1.6rem;
+    }
+
+    .need-inputs {
+        flex-direction: column;
+        margin-left: 20px;
+    }
+    
+    .need-input {
+        width: 100%;
+    }
+
+    .home-icon {
+        width: 70px;
+        height: 70px;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+    
+    .needs-title,
+    .need-category {
+        padding-left: 10px;
+    }
+    
+    .need-inputs {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .project-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-input,
+    .need-input {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    .needs-title {
+        font-size: 1.8rem;
+    }
+
+    .need-category {
+        font-size: 1.4rem;
+    }
+
+    .btn-submit {
+        font-size: 1.5rem;
+        padding: 18px 60px;
+    }
+
+    .home-icon {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+/* Reset et configuration de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image du Keffieh en haut à gauche */
+.kufiya-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.kufiya-corner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Logo drapeau palestinien en haut à droite */
+.flag-logo {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+
+.flag-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.main-container {
+    background-color: transparent;
+    padding: 40px;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Titre de la page */
+.page-title {
+    font-size: 4.5rem;
+    color: #2d1810;
+    margin-bottom: 80px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Texte d'instruction */
+.instruction-text {
+    font-size: 2.2rem;
+    color: #2d1810;
+    margin-bottom: 60px;
+    font-weight: 400;
+    text-align: left;
+    padding-left: 80px;
+}
+
+/* Conteneur des boutons d'action */
+.action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 80px;
+    margin-bottom: 50px;
+    padding-left: 80px;
+}
+
+.action-buttons.second-row {
+    margin-bottom: 0;
+}
+
+/* Boutons d'action */
+.action-btn {
+    min-width: 300px;
+    padding: 25px 50px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    border: none;
+    border-radius: 15px;
+    background-color: #2d5047;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(45, 80, 71, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.action-btn:hover {
+    background-color: #3a6559;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(45, 80, 71, 0.4);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(45, 80, 71, 0.3);
+}
+
+/* Icône maison en bas à droite */
+.home-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    width: 90px;
+    height: 90px;
+    z-index: 100;
+}
+
+.home-icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #2d5047;
+    transition: all 0.3s ease;
+}
+
+.home-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.home-icon a:hover {
+    transform: scale(1.1);
+    color: #3a6559;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .flag-logo {
+        right: 40px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .page-title {
+        font-size: 3.5rem;
+    }
+
+    .instruction-text {
+        font-size: 1.8rem;
+        padding-left: 40px;
+    }
+
+    .action-buttons {
+        gap: 50px;
+        padding-left: 40px;
+    }
+
+    .action-btn {
+        min-width: 250px;
+        font-size: 1.5rem;
+        padding: 20px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 40px 20px;
+    }
+
+    .page-title {
+        font-size: 2.8rem;
+        margin-bottom: 50px;
+    }
+
+    .instruction-text {
+        font-size: 1.5rem;
+        padding-left: 20px;
+        margin-bottom: 40px;
+    }
+
+    .kufiya-corner {
+        width: 250px;
+        height: 250px;
+    }
+
+    .flag-logo {
+        width: 120px;
+        height: 120px;
+        right: 20px;
+        top: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 25px;
+        padding-left: 20px;
+        align-items: flex-start;
+    }
+
+    .action-btn {
+        min-width: 280px;
+        width: auto;
+    }
+
+    .home-icon {
+        width: 70px;
+        height: 70px;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .instruction-text {
+        font-size: 1.3rem;
+    }
+
+    .action-btn {
+        min-width: 240px;
+        font-size: 1.3rem;
+        padding: 18px 35px;
+    }
+
+    .home-icon {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+/*project identity*/
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #f5ebe5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+}
+
+/* Keffiyeh Pattern - Top Left */
+.koufiyah-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.koufiyah-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Logo - Top Right */
+.logo-container {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #d8ccc4;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 3;
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #5a2e2e;
+    font-weight: 600;
+    margin-bottom: 70px;
+    letter-spacing: 0.5px;
+}
+
+/* Project Form */
+.project-form {
+    width: 100%;
+}
+
+/* Field Group */
+.field-group {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Field Label */
+.field-label {
+    background-color: #e8dad2;
+    color: #5a2e2e;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.field-label:hover {
+    background-color: #dcc9bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.field-label:active {
+    cursor: grabbing;
+}
+
+/* Field Input */
+.field-input {
+    padding: 14px 22px;
+    border: 2.5px solid #5a2e2e;
+    border-radius: 12px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    outline: none;
+    cursor: grab;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.field-input:hover {
+    border-color: #7a4242;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.field-input:focus {
+    border-color: #8b4e4e;
+    box-shadow: 0 0 0 3px rgba(90, 46, 46, 0.1);
+    cursor: text;
+}
+
+.field-input:active:not(:focus) {
+    cursor: grabbing;
+}
+
+/* Needs Section */
+.needs-wrapper {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.needs-header {
+    background-color: #e8dad2;
+    color: #5a2e2e;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 35px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.needs-header:hover {
+    background-color: #dcc9bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.needs-header:active {
+    cursor: grabbing;
+}
+
+.needs-content {
+    padding-left: 60px;
+}
+
+/* Need Item */
+.need-item {
+    display: grid;
+    grid-template-columns: 20px 120px 1fr;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.bullet {
+    color: #b0b0b0;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.need-name {
+    color: #454545;
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.need-input {
+    padding: 14px 22px;
+    border: 2.5px solid #5a2e2e;
+    border-radius: 12px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    outline: none;
+    cursor: grab;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.need-input:hover {
+    border-color: #7a4242;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.need-input:focus {
+    border-color: #8b4e4e;
+    box-shadow: 0 0 0 3px rgba(90, 46, 46, 0.1);
+    cursor: text;
+}
+
+.need-input:active:not(:focus) {
+    cursor: grabbing;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+/* Donate Button */
+.donate-button {
+    background-color: #5a2e2e;
+    color: #ffffff;
+    padding: 16px 55px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(90, 46, 46, 0.25);
+}
+
+.donate-button:hover {
+    background-color: #6e3838;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(90, 46, 46, 0.35);
+}
+
+.donate-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(90, 46, 46, 0.3);
+}
+
+/* Dragging States */
+.draggable {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.dragging {
+    opacity: 0.7;
+    cursor: grabbing !important;
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+    z-index: 1000 !important;
+}
+
+.field-label.dragging,
+.needs-header.dragging {
+    background-color: #d4c4b8;
+}
+
+.field-input.dragging,
+.need-input.dragging {
+    border-color: #8b4e4e;
+    background-color: #fffef8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 60px 20px;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+
+    .koufiyah-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .logo-container {
+        width: 80px;
+        height: 80px;
+        top: 30px;
+        right: 20px;
+    }
+
+    .field-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .field-label {
+        text-align: center;
+    }
+
+    .needs-content {
+        padding-left: 20px;
+    }
+
+    .need-item {
+        grid-template-columns: 20px 1fr;
+        gap: 10px;
+    }
+
+    .need-name {
+        grid-column: 2;
+        margin-bottom: 10px;
+    }
+
+    .need-input {
+        grid-column: 2;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+
+    .donate-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .field-label,
+    .needs-header {
+        font-size: 1rem;
+    }
+
+    .donate-button {
+        font-size: 1.2rem;
+        padding: 14px 40px;
+    }
+}
+
+
+body {
+  font-family: 'Playfair Display', Georgia, serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Kufiya */
+.kufiya-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 350px;
+}
+
+.kufiya-corner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.flag-logo {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  width: 180px;
+  height: 180px;
+}
+
+.flag-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  padding: 15px;
+  border: 3px solid #ddd;
+}
+
+
+.main-container {
+  text-align: center;
+  max-width: 1100px;
+  width: 100%;
+  padding: 40px;
+}
+
+.page-title {
+  font-size: 4rem;
+  color: #1f3d33;
+  margin-bottom: 20px;
+}
+
+.instruction-text {
+  font-size: 1.8rem;
+  margin-bottom: 60px;
+  color: #000;
+}
+
+
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.choice-btn {
+  min-width: 230px;
+  padding: 18px 30px;
+  font-size: 1.6rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #1f3d33;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.choice-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+
+.separator {
+  margin-bottom: 40px;
+  font-size: 1.5rem;
+}
+
+
+.financing-btn {
+  min-width: 420px;
+  padding: 18px 40px;
+  background-color: #1f3d33;
+  color: white;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.horizontal-line {
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  margin: 50px auto 30px;
+}
+
+
+.quote-text {
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+
+.home-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  width: 70px;
+  height: 70px;
+  color: #1f3d33;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Kufiah pattern background */
+.kufiah-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 300px;
+    background-image: url('images/kouffia.png');  /* Make sure this matches your image filename */
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* Logo container */
+.logo-container {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    z-index: 10;
+}
+
+.flag-logo {
+    width: 80px;
+    height: auto;
+}
+
+/* Main container */
+.container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    text-align: center;
+    z-index: 5;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #f5f5f5;
+    margin-bottom: 60px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Form styling */
+form {
+    background-color: #d4d4d4;
+    padding: 50px 60px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1a4d3d;
+}
+
+/* Confirm button */
+.confirm-btn {
+    background-color: #4a1e1e;
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 18px 60px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.confirm-btn:hover {
+    background-color: #361515;
+    transform: translateY(-2px);
+}
+
+.confirm-btn:active {
+    transform: translateY(0);
+}
+
+/* Help text */
+.help-text {
+    color: #f5f5f5;
+    font-size: 1.2rem;
+    margin-top: 40px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Home icon */
+.home-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.home-img {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.home-img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    form {
+        padding: 40px 30px;
+    }
+
+    .kufiah-pattern {
+        width: 250px;
+        height: 200px;
+    }
+
+    .logo-container {
+        top: 20px;
+        right: 20px;
+    }
+
+    .flag-logo {
+        width: 60px;
+    }
+
+    .home-icon {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .home-img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        padding: 30px 20px;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+
+    .confirm-btn {
+        font-size: 1.5rem;
+        padding: 15px 40px;
+    }
+
+    .help-text {
+        font-size: 1rem;
+    }
+}
+
+
+.send-btn {
+    background-color: #4a1e1e;
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 18px 60px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.send-btn:hover {
+    background-color: #361515;
+    transform: translateY(-2px);
+}
+
+.send-btn:active {
+    transform: translateY(0);
+}
+.flag-logo {
+    width: 80px;
+    height: auto;
+    margin-right:-60px;
+    margin-top:-30px;
+}
+/* Logo container */
+.logo-container {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    z-index: 10;
+}
+/* Kufiah pattern background */
+.kufiah-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 300px;
+    background-image: url('images/kouffia.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}

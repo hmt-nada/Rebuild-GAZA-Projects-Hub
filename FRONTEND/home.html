@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rebuild Gaza Projects Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+  --green:#163f2e;
+  --accent:#5b1a1a;
+  --text: rgba(0,0,0,0.75);
+  --soft: #f7f5f3;
+  --pill: rgba(255,255,255,0.55);
+  --shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+section{
+  margin-bottom: 80px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:#fff;
+  padding: 0%;
+  min-height: 100vh;
+}
+
+.container{
+  width: min(980px, 92vw);
+  margin: 0 auto;
+}
+
+/* HERO */
+.hero{
+  min-height: 92vh;
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: url("images/free_palestine.jpg") center/cover no-repeat;
+    width: 100vw; 
+    height: 100vh; 
+    }
+
+.topnav{
+  position:fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-pill{
+  display:flex;
+  gap: 28px;
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: var(--pill);
+  backdrop-filter: blur(6px);
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: 16px;
+}
+
+.nav-pill a{
+  text-decoration:none;
+  color: rgba(0,0,0,0.7);
+  font-weight: 700;
+}
+
+.nav-pill a:hover{ text-decoration: underline; }
+
+.hero-center{
+  text-align:center;
+  padding: 40px 16px;
+}
+
+.hero-title{
+  margin:0 0 35px 0;
+  font-family:"Playfair Display", serif;
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 1.1;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 22px rgba(0,0,0,0.35);
+}
+
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.60);
+  backdrop-filter: blur(6px);
+  border: 2px solid rgba(91,26,26,0.55);
+  color: var(--accent);
+  font-family:"Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration:none;
+  box-shadow: var(--shadow);
+}
+
+.cta-ico{
+  width: 26px;
+  height: 26px;
+  display:grid;
+  place-items:center;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.45);
+  color: rgba(0,0,0,0.55);
+  font-family: Inter, sans-serif;
+}
+
+.cta:hover{ transform: translateY(-2px); transition: .15s ease; }
+
+/* SECTIONS */
+.section{
+  padding: 60px 0;
+}
+
+/* ABOUT */
+.about-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-title-pill{
+  width: 240px;
+  margin: 0 auto 18px auto;
+  text-align:center;
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family:"Playfair Display", serif;
+  font-size: 36px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.about-text{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 20px;
+  max-width: 750px;
+  margin: 0 auto 26px auto;
+  color: rgba(0,0,0,0.72);
+}
+
+.team{
+display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    justify-items: center;
+}
+
+.member{
+  text-align:center;
+  width: 190px;
+}
+
+.member img{
+ width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.member-name{
+  margin-top: 14px;
+  font-family:"Playfair Display", serif;
+  font-size: 20px;
+  color: rgba(0,0,0,0.78);
+}
+
+.member-role{
+  font-family:"Playfair Display", serif;
+  font-size: 18px;
+  color: rgba(0,0,0,0.60);
+}
+
+.member-center{
+  display:flex;
+  justify-content:center;
+  margin-top: 22px;
+}
+
+.avatar-placeholder{
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.12);
+  margin: 0 auto;
+}
+
+/* HISTORY */
+.history-title{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 34px;
+  margin: 0 0 16px 0;
+  color: rgba(0,0,0,0.85);
+}
+
+.history-text{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 18px;
+  max-width: 760px;
+  margin: 0 auto 34px auto;
+  color: rgba(0,0,0,0.60);
+  line-height: 1.5;
+}
+
+.history-photos{
+  position: relative;
+  height: 220px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap: 10px;
+}
+
+.hpic{
+  width: 170px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+  border: 4px solid #fff;
+}
+
+/* curve effect like screenshot */
+.p1{ transform: rotate(-10deg) translateY(18px); }
+.p2{ transform: rotate(-5deg) translateY(6px); }
+.p3{ transform: rotate(0deg) translateY(0px); }
+.p4{ transform: rotate(5deg) translateY(6px); }
+.p5{ transform: rotate(10deg) translateY(18px); }
+
+/* responsive */
+@media (max-width: 900px){
+  .team{ justify-content:center; }
+}
+
+@media (max-width: 650px){
+  .nav-pill{ gap: 14px; font-size: 14px; flex-wrap: wrap; }
+  .hpic{ width: 120px; height: 120px; }
+  .history-photos{ height: 180px; }
+}
+
+/* initial hidden state */
+.member{
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* when revealed */
+.member.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hover animation on card */
+.member:hover{
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* burgundy animated border on images */
+.member img:hover,
+.avatar-placeholder:hover{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px rgba(91, 26, 26, 0.15),
+              0 12px 28px rgba(91, 26, 26, 0.35);
+}
+
+.hpic{
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* reveal */
+.history.show .hpic{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* fixed order using existing classes */
+.p1{ transition-delay: 0s; }
+.p2{ transition-delay: 0.12s; }
+.p3{ transition-delay: 0.24s; }
+.p4{ transition-delay: 0.36s; }
+.p5{ transition-delay: 0.48s; }
+
+/* hover stays the same */
+.hpic:hover{
+  transform: translateY(-10px) scale(1.06);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 6px rgba(91, 26, 26, 0.15),
+    0 18px 36px rgba(91, 26, 26, 0.45);
+}
+
+.card.active {
+    transform: translateY(-50px) scale(1.1) !important;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.membership {
+    padding: 20px 20px 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    overflow: visible;
+}
+
+.koufiyah {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    width: 250px;
+    height: 250px;
+    z-index: 1;
+}
+
+.koufiyah img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.membership-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 0;
+    z-index: 2;
+}
+
+.membership-title {
+    font-size: 2.5rem;
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin: 0;
+}
+
+.flag-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    cursor: move;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.flag-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Brighten effect when clicked */
+.flag-circle.bright {
+    filter: brightness(1.5) contrast(1.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    border-color: #ffd700;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+}
+
+/* Dragging state for logo */
+.flag-circle.dragging-logo {
+    opacity: 0.8;
+    transform: scale(1.1);
+    cursor: grabbing;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.flag-icon {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* Validation Grid */
+.validation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.validation-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 250px;
+}
+
+.validation-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.validate-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(45, 85, 75, 0.9);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.validate-btn:hover {
+    background: rgba(45, 85, 75, 1);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Validated State */
+.validation-card.validated {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.validation-card.validated img {
+    transform: scale(1.1);
+}
+
+.validation-card.validated .validate-btn {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.validation-card.validated .validate-btn::after {
+    content: '✓';
+    margin-left: 8px;
+}
+
+/* Draggable State */
+.validation-card.dragging {
+    opacity: 0.5;
+    cursor: move;
+}
+
+.validation-card.drag-over {
+    border: 3px dashed #2d554b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .validation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .membership-header {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 60px;
+    }
+
+    .koufiyah {
+        width: 150px;
+        height: 150px;
+    }
+
+    .membership-title {
+        font-size: 2rem;
+    }
+
+    .validation-card {
+        height: 200px;
+    }
+}
+/* CONNECT WITH US SECTION */
+.connect {
+    background-color: #d4d4d4;
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connect-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.connect-title {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    color: #4a1e1e;
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.connect-pill {
+    background-color: transparent;
+    color: #555;
+    font-size: 1.1rem;
+    padding: 18px 50px;
+    border: 2px solid #888;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 50px;
+    max-width: 800px;
+    font-family: 'Georgia', serif;
+}
+
+/* Social Media Icons */
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.social {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.social img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.social:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Back to Top Button */
+.back-top {
+    background-color: #4a1e1e;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(74, 30, 30, 0.3);
+}
+
+.arrow {
+    font-size: 1.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.back-top:hover {
+    background-color: #361515;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(74, 30, 30, 0.4);
+}
+
+.back-top:hover .arrow {
+    transform: translateX(-5px);
+}
+
+.back-top:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .connect {
+        padding: 60px 20px;
+    }
+
+    .connect-title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .connect-pill {
+        font-size: 1rem;
+        padding: 15px 35px;
+        margin-bottom: 40px;
+    }
+
+    .socials {
+        gap: 15px;
+        margin-bottom: 50px;
+    }
+
+    .social {
+        width: 55px;
+        height: 55px;
+    }
+
+    .back-top {
+        font-size: 1.1rem;
+        padding: 15px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .connect-title {
+        font-size: 2rem;
+    }
+
+    .connect-pill {
+        font-size: 0.9rem;
+        padding: 12px 25px;
+    }
+
+    .socials {
+        gap: 12px;
+    }
+
+    .social {
+        width: 50px;
+        height: 50px;
+    }
+
+    .back-top {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    .arrow {
+        font-size: 1.3rem;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <nav class="topnav">
+      <div class="nav-pill">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#history">GAZA HISTORY</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </nav>
+
+    <div class="hero-center">
+      <h1 class="hero-title">Rebuild Gaza Projects<br>Hub</h1>
+
+      <a class="cta" href="inscription.html">
+        Get started
+        <span class="cta-ico">→</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-card">
+        <div class="about-title-pill">About us</div>
+
+        <p class="about-text">
+          Who are we ? A group of 5 Algerian computer science students at Esi Algiers
+          who wants to help rebuild Gaza .
+        </p>
+
+        <div class="team">
+          <div class="member">
+            <img src="images/aya.jpg" alt="Aya Dahmani">
+            <div class="member-name">Aya Dahmani</div>
+            <div class="member-role">2cp Student</div>
+          </div>
+
+          <div class="member">
+            <img src="images/team2.jpg" alt="Rihab Boudia">
+            <div class="member-name">Rihab Boudia</div>
+            <div class="member-role">2cp Student</div>
+          </div>
+
+          <div class="member">
+            <img src="images/team3.jpg" alt="Hamitouche Nada">
+            <div class="member-name">Hamitouche<br>Nada</div>
+            <div class="member-role">2cp Student</div>
+          </div>
+
+          <div class="member">
+            <img src="images/team4.jpg" alt="Kenioua Yasmine">
+            <div class="member-name">Kenioua<br>Yasmine</div>
+            <div class="member-role">2cp Student</div>
+          </div>
+        </div>
+
+        <div class="member-center">
+          <div class="member">
+            <div class="avatar-placeholder"></div>
+            <div class="member-name">Sellam Samia</div>
+            <div class="member-role">2cp Student</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="section history" id="history">
+    <div class="container">
+      <h2 class="history-title">History of Gaza</h2>
+
+      <p class="history-text">
+        In recent decades, Gaza has been deeply affected by repeated wars and
+        military operations involving Israel. Ongoing conflict, occupation, and
+        blockade have led to widespread destruction of homes, infrastructure, and
+        essential services. These wars have created a prolonged humanitarian crisis
+        that continues to impact everyday life in Gaza.
+      </p>
+
+      <div class="history-photos">
+        <img class="hpic p1" src="images/gaza1.jpeg" alt="Gaza 1">
+        <img class="hpic p2" src="images/GAZA3.jpg" alt="Gaza 2">
+        <img class="hpic p3" src="images/GAZA4.jpg" alt="Gaza 3">
+        <img class="hpic p4" src="images/GAZA5.jpg" alt="Gaza 4">
+        <img class="hpic p5" src="images/Two_years_of_displacement_and_destruction_in_Gaza_photo_essay.jpeg" alt="Gaza 5">
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <script>
+  const members = document.querySelectorAll('.member');
+  const photos = document.querySelectorAll('.hpic');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, index * 120);
+      }
+    });
+  }, { threshold: 0.2 });
+   const history = document.querySelector('.history');
+
+  observer.observe(history);
+
+  members.forEach(el => observer.observe(el));
+  photos.forEach(el => observer.observe(el));
+  const backTopBtn = document.getElementById("backTopBtn");
+
+if (backTopBtn) {
+  backTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+} 
+</script>
+
+ 
+    <!-- CONNECT WITH US -->
+<section class="connect" id="contact">
+  <div class="connect-wrap">
+
+    <h2 class="connect-title">connect with us</h2>
+
+    <div class="connect-pill">
+      follow us on social media for updates, news, and exclusive content
+    </div>
+
+    <div class="socials">
+
+      <!-- Replace # with your real links -->
+      <a class="social" href="#" target="_blank" aria-label="Facebook">
+        <img src="images/facebook.jpg" alt="Facebook">
+      </a>
+
+      <a class="social" href="#" target="_blank" aria-label="Twitter">
+        <img src="images/twitter.jpg" alt="Twitter">
+      </a>
+
+      <a class="social" href="#" target="_blank" aria-label="Instagram">
+        <img src="images/instagram.jpg" alt="Instagram">
+      </a>
+
+      <a class="social" href="#" target="_blank" aria-label="LinkedIn">
+        <img src="images/linkedin.jpg" alt="LinkedIn">
+      </a>
+
+      <a class="social" href="#" target="_blank" aria-label="YouTube">
+        <img src="images/youtube.jpg" alt="YouTube">
+      </a>
+
+      <a class="social" href="mailto:yourmail@gmail.com" aria-label="Email">
+        <img src="images/gmail.jpg" alt="Gmail">
+      </a>
+
+    </div>
+
+    <a href="#home" class="back-top" id="backTopBtn">
+      <span class="arrow">↩</span>
+      BACK TO TOP
+    </a>
+
+  </div>
+</section>
+
+</body>
+</html>

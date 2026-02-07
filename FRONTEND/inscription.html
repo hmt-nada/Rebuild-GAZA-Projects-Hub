@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebuild Gaza Projects Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Image du Keffieh en haut à gauche -->
+    <div class="kufiya-corner">
+        <img src="images/kouffia.png" alt="Kufiya Pattern">
+    </div>
+
+    <!-- Logo drapeau palestinien en haut à droite -->
+    <div class="flag-logo">
+        <img src="images/logo.svg" alt="Palestine Flag">
+    </div>
+
+    <!-- Conteneur principal -->
+    <div class="auth-container">
+        <h1 class="auth-title">Login</h1>
+
+        <!-- ================= FORMULAIRE LOGIN ================= -->
+        <div id="loginSection" class="form-section active">
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn-enter">Login</button>
+
+                <div class="switch-link">
+                    <span>Don't have an account?</span>
+                    <a href="#" id="showRegister">Register</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- ================= FORMULAIRE REGISTER ================= -->
+        <div id="registerSection" class="form-section">
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <input type="text" id="register-fullname" name="fullName" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="register-email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="register-password" name="password" placeholder="Password" required>
+                    
+                </div>
+
+                <div class="form-group">
+                   <select id="role" name="role" required>
+    <option value="" disabled selected>Role</option>
+    <option value="user">Donnator</option>
+    <option value="project_owner">Project Owner</option>
+    <option value="idea_initiator">Idea Initiator</option>
+</select>
+
+
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="country" name="country" placeholder="Country" required>
+                </div>
+
+                <button type="submit" class="btn-enter">Register</button>
+
+                <div class="switch-link">
+                    <span>Already have an account?</span>
+                    <a href="#" id="showLogin">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/inscription.js"></script>
+</body>
+</html>

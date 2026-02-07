@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Main Page • Rebuild Gaza Projects Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- KUFFIYEH IMAGE (top-left) -->
+    <img
+      class="kuffiyeh"
+      src="images/kouffia.png"
+      alt="Kuffiyeh decoration"
+    />
+
+    <!-- LOGO IMAGE (top-right) -->
+    <img
+      class="logo"
+      src="images/logo.svg"
+      alt="Logo"
+    />
+
+    <h1 class="title">Main Page</h1>
+    <p class="subtitle">Choose the domaine that you want to contribute on it</p>
+
+    <section class="grid">
+
+  <div class="box">
+    <a  class="pill">HeEALTH & HUMANITARIAN CARE</a>
+    <a class="img-card" data-category="health">
+      <img src="images/Rectangle_11.png" alt="Health">
+    </a>
+  </div>
+
+  <div class="box">
+    <a  class="pill">CLEAN WATER ACCESS</a>
+    <a class="img-card" data-category="water">
+      <img src="images/Rectangle_12.png" alt="Water">
+    </a>
+  </div>
+
+  <div class="box">
+    <a  class="pill">EDUCATION & LEARNING</a>
+    <a class="img-card" data-category="education">
+      <img src="images/Rectangle_13.png" alt="Education">
+    </a>
+  </div>
+
+  <div class="box">
+    <a class="pill">RECONSTRUCTION & HOUSING</a>
+    <a class="img-card" data-category="housing">
+      <img src="images/Rectangle_14.png" alt="Housing">
+    </a>
+  </div>
+
+</section>
+
+    <p class="msg" id="msg"></p>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
+<script>
+// Sélectionner tous les liens des domaines (les .img-card)
+document.querySelectorAll(".img-card").forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault(); // Empêche la navigation instantanée
+
+        // Récupérer le domaine depuis data-category
+        const domain = link.dataset.category;
+
+        // Stocker dans localStorage
+        localStorage.setItem("selectedDomain", domain);
+
+        // Rediriger vers map.html
+        window.location.href = "map2.html";
+    });
+});
+
+</script>

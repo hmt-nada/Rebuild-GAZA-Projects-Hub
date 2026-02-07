@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project - Rebuild Gaza Projects Hub</title>
+    <link rel="stylesheet" href="Add association.css">
+    <!-- Ajout de la police Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+
+
+<!-- porject validation-->
+ <style>
+    /*project validation */
+.card.active {
+    transform: translateY(-50px) scale(1.1) !important;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.membership {
+    padding: 20px 20px 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    overflow: visible;
+}
+
+.koufiyah {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    width: 250px;
+    height: 250px;
+    z-index: 1;
+}
+
+.koufiyah img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.membership-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 0;
+    z-index: 2;
+}
+
+.membership-title {
+    font-size: 2.5rem;
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin: 0;
+}
+
+.flag-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    cursor: move;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.flag-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Brighten effect when clicked */
+.flag-circle.bright {
+    filter: brightness(1.5) contrast(1.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    border-color: #ffd700;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+}
+
+/* Dragging state for logo */
+.flag-circle.dragging-logo {
+    opacity: 0.8;
+    transform: scale(1.1);
+    cursor: grabbing;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.flag-icon {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* Validation Grid */
+.validation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.validation-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: visible;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.validation-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    border-radius: 15px;
+    margin-bottom: 8px;
+}
+
+.validate-btn {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(45, 85, 75, 0.9);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.validate-btn:hover {
+    background: rgba(45, 85, 75, 1);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Button Container */
+.button-container {
+    padding: 0;
+    margin: 0;
+}
+
+/* Show Button */
+.show-btn {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    opacity: 1;
+    font-family: 'Georgia', serif;
+}
+
+.show-btn:hover {
+    color: #888;
+}
+
+/* Validated State */
+.validation-card.validated {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.validation-card.validated img {
+    transform: scale(1.1);
+}
+
+.validation-card.validated .validate-btn {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.validation-card.validated .validate-btn::after {
+    content: '✓';
+    margin-left: 8px;
+}
+
+/* Draggable State */
+.validation-card.dragging {
+    opacity: 0.5;
+    cursor: move;
+}
+
+.validation-card.drag-over {
+    border: 3px dashed #2d554b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .validation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .membership-header {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 60px;
+    }
+
+    .koufiyah {
+        width: 150px;
+        height: 150px;
+    }
+
+    .membership-title {
+        font-size: 2rem;
+    }
+
+    .validation-card img {
+        height: 200px;
+    }
+}
+ </style>
+ </head>
+<body>
+  <section class="membership">
+    <div class="koufiyah">
+        <img src="images/kouffia.png" alt="">
+    </div>
+    <div class="membership-header">
+        <h2 class="membership-title">Association membre</h2>
+        <div class="flag-circle">
+            <img src="images/logo.svg" alt="logo" class="flag-icon">
+        </div>
+    </div>
+
+    <div class="validation-grid">
+        <div class="validation-card" data-index="0">
+            <img src="images/health.jpeg" alt="Member Image 1">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="identity.html" class="show-btn" data-id="1">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card" data-index="1">
+            <img src="images/education.jpeg" alt="Member Image 2">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn" data-id="2">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card" data-index="2">
+            <img src="images/shcooling.jpeg" alt="Member Image 3">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn" data-id="3">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card" data-index="3">
+            <img src="images/amusement.jpeg" alt="Member Image 4">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn" data-id="4">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card" data-index="4">
+            <img src="images/housing.jpeg" alt="Member Image 5">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn" data-id="5">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card" data-index="5">
+            <img src="images/water.jpeg" alt="Member Image 6">
+            <button class="validate-btn">VALIDATE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn" data-id="6">Show project details</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<script>
+async function loadUnverifiedProjects() {
+    const grid = document.getElementById("validationGrid");
+    grid.innerHTML = "";
+
+    try {
+        const res = await fetch("http://localhost:3000/projects/unverified");
+        const projects = await res.json();
+
+        projects.forEach((proj, index) => {
+            const card = document.createElement("div");
+            card.classList.add("validation-card");
+            card.dataset.title = proj.title;
+            card.dataset.id = proj.id;
+
+            card.innerHTML = `
+                <img src="images/default.jpeg" alt="${proj.title}">
+                <button class="validate-btn">VALIDATE</button>
+                <div class="button-container">
+                    <a href="identity.html?id=${proj.id}" class="show-btn">Show project details</a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        attachButtonEvents();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+// Gestion clics Validate
+const validateButtons = document.querySelectorAll(".validate-btn");
+
+validateButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const card = e.target.closest(".validation-card");
+        const title = card.dataset.title || "ce projet"; // fallback si pas de data-title
+
+        // Notification
+        alert("✅ " + title + " est maintenant validé !");
+
+        // Changer visuellement le bouton
+        btn.textContent = "VERIFIED";
+        btn.disabled = true;
+
+        // Ajouter le style validé sur la carte
+        card.classList.add("validated");
+    });
+});
+const showBtns = document.querySelectorAll(".show-btn");
+showBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault(); // Empêche le lien de naviguer immédiatement
+        const projectId = btn.dataset.id;
+        localStorage.setItem("selectedProjectId", projectId);
+        window.location.href = "identity2.html"; // Redirige après stockage
+    });
+});
+
+</script>

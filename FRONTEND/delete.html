@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rebuild Gaza Projects Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="new.css" />
+  <style>
+    :root{
+  --green:#163f2e;
+  --accent:#5b1a1a;
+  --text: rgba(0,0,0,0.75);
+  --soft: #f7f5f3;
+  --pill: rgba(255,255,255,0.55);
+  --shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+section{
+  margin-bottom: 80px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:#fff;
+  padding: 0%;
+  min-height: 100vh;
+}
+
+.container{
+  width: min(980px, 92vw);
+  margin: 0 auto;
+}
+
+/* HERO */
+.hero{
+  min-height: 92vh;
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: url("free_palestine.jpg") center/cover no-repeat;
+    width: 100vw; 
+    height: 100vh; 
+    }
+
+.topnav{
+  position:fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-pill{
+  display:flex;
+  gap: 28px;
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: var(--pill);
+  backdrop-filter: blur(6px);
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: 16px;
+}
+
+.nav-pill a{
+  text-decoration:none;
+  color: rgba(0,0,0,0.7);
+  font-weight: 700;
+}
+
+.nav-pill a:hover{ text-decoration: underline; }
+
+.hero-center{
+  text-align:center;
+  padding: 40px 16px;
+}
+
+.hero-title{
+  margin:0 0 35px 0;
+  font-family:"Playfair Display", serif;
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 1.1;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 22px rgba(0,0,0,0.35);
+}
+
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.60);
+  backdrop-filter: blur(6px);
+  border: 2px solid rgba(91,26,26,0.55);
+  color: var(--accent);
+  font-family:"Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration:none;
+  box-shadow: var(--shadow);
+}
+
+.cta-ico{
+  width: 26px;
+  height: 26px;
+  display:grid;
+  place-items:center;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.45);
+  color: rgba(0,0,0,0.55);
+  font-family: Inter, sans-serif;
+}
+
+.cta:hover{ transform: translateY(-2px); transition: .15s ease; }
+
+/* SECTIONS */
+.section{
+  padding: 60px 0;
+}
+
+/* ABOUT */
+.about-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-title-pill{
+  width: 240px;
+  margin: 0 auto 18px auto;
+  text-align:center;
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family:"Playfair Display", serif;
+  font-size: 36px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.about-text{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 20px;
+  max-width: 750px;
+  margin: 0 auto 26px auto;
+  color: rgba(0,0,0,0.72);
+}
+
+.team{
+display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    justify-items: center;
+}
+
+.member{
+  text-align:center;
+  width: 190px;
+}
+
+.member img{
+ width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.member-name{
+  margin-top: 14px;
+  font-family:"Playfair Display", serif;
+  font-size: 20px;
+  color: rgba(0,0,0,0.78);
+}
+
+.member-role{
+  font-family:"Playfair Display", serif;
+  font-size: 18px;
+  color: rgba(0,0,0,0.60);
+}
+
+.member-center{
+  display:flex;
+  justify-content:center;
+  margin-top: 22px;
+}
+
+.avatar-placeholder{
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.12);
+  margin: 0 auto;
+}
+
+/* HISTORY */
+.history-title{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 34px;
+  margin: 0 0 16px 0;
+  color: rgba(0,0,0,0.85);
+}
+
+.history-text{
+  text-align:center;
+  font-family:"Playfair Display", serif;
+  font-size: 18px;
+  max-width: 760px;
+  margin: 0 auto 34px auto;
+  color: rgba(0,0,0,0.60);
+  line-height: 1.5;
+}
+
+.history-photos{
+  position: relative;
+  height: 220px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap: 10px;
+}
+
+.hpic{
+  width: 170px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+  border: 4px solid #fff;
+}
+
+/* curve effect like screenshot */
+.p1{ transform: rotate(-10deg) translateY(18px); }
+.p2{ transform: rotate(-5deg) translateY(6px); }
+.p3{ transform: rotate(0deg) translateY(0px); }
+.p4{ transform: rotate(5deg) translateY(6px); }
+.p5{ transform: rotate(10deg) translateY(18px); }
+
+/* responsive */
+@media (max-width: 900px){
+  .team{ justify-content:center; }
+}
+
+@media (max-width: 650px){
+  .nav-pill{ gap: 14px; font-size: 14px; flex-wrap: wrap; }
+  .hpic{ width: 120px; height: 120px; }
+  .history-photos{ height: 180px; }
+}
+
+/* initial hidden state */
+.member{
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* when revealed */
+.member.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hover animation on card */
+.member:hover{
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* burgundy animated border on images */
+.member img:hover,
+.avatar-placeholder:hover{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px rgba(91, 26, 26, 0.15),
+              0 12px 28px rgba(91, 26, 26, 0.35);
+}
+
+.hpic{
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* reveal */
+.history.show .hpic{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* fixed order using existing classes */
+.p1{ transition-delay: 0s; }
+.p2{ transition-delay: 0.12s; }
+.p3{ transition-delay: 0.24s; }
+.p4{ transition-delay: 0.36s; }
+.p5{ transition-delay: 0.48s; }
+
+/* hover stays the same */
+.hpic:hover{
+  transform: translateY(-10px) scale(1.06);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 6px rgba(91, 26, 26, 0.15),
+    0 18px 36px rgba(91, 26, 26, 0.45);
+}
+ 
+
+/*project validation */
+.card.active {
+    transform: translateY(-50px) scale(1.1) !important;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.membership {
+    padding: 20px 20px 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    overflow: visible;
+}
+
+.koufiyah {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    width: 250px;
+    height: 250px;
+    z-index: 1;
+}
+
+.koufiyah img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.membership-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 0;
+    z-index: 2;
+}
+
+.membership-title {
+    font-size: 2.5rem;
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin: 0;
+}
+
+.flag-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    cursor: move;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.flag-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Brighten effect when clicked */
+.flag-circle.bright {
+    filter: brightness(1.5) contrast(1.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    border-color: #ffd700;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+}
+
+/* Dragging state for logo */
+.flag-circle.dragging-logo {
+    opacity: 0.8;
+    transform: scale(1.1);
+    cursor: grabbing;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.flag-icon {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* Validation Grid */
+.validation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.validation-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: visible;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+}
+
+.validation-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    border-radius: 15px;
+    margin-bottom: 0;
+}
+
+.validate-btn {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(45, 85, 75, 0.9);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.validate-btn:hover {
+    background: rgba(45, 85, 75, 1);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Button Container - UPDATED */
+.validation-card .button-container {
+    padding: 12px 0;
+    margin: 0;
+    text-align: center;
+    background: transparent;
+}
+
+/* Show Button - UPDATED */
+.validation-card .show-btn {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    opacity: 1;
+    font-family: 'Georgia', serif;
+}
+
+.validation-card .show-btn:hover {
+    color: #888;
+    text-decoration: underline;
+}
+
+/* Validated State */
+.validation-card.validated {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.validation-card.validated img {
+    transform: scale(1.1);
+}
+
+.validation-card.validated .validate-btn {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.validation-card.validated .validate-btn::after {
+    content: '✓';
+    margin-left: 8px;
+}
+
+/* Draggable State */
+.validation-card.dragging {
+    opacity: 0.5;
+    cursor: move;
+}
+
+.validation-card.drag-over {
+    border: 3px dashed #2d554b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .validation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .membership-header {
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 60px;
+    }
+
+    .koufiyah {
+        width: 150px;
+        height: 150px;
+    }
+
+    .membership-title {
+        font-size: 2rem;
+    }
+
+    .validation-card img {
+        height: 200px;
+    }
+}
+
+/* DELETE SECTION STYLES */
+.delete-section {
+    margin-top: 60px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(180, 50, 50, 0.9);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.delete-btn:hover {
+    background: rgba(200, 30, 30, 1);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Deleted State */
+.delete-card.deleted {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 8px 30px rgba(180, 50, 50, 0.3);
+}
+
+.delete-card.deleted img {
+    transform: scale(1.1);
+    filter: grayscale(50%);
+}
+
+.delete-card.deleted .delete-btn {
+    background: rgba(150, 150, 150, 0.9);
+}
+
+.delete-card.deleted .delete-btn::after {
+    content: '✗';
+    margin-left: 8px;
+}
+
+/*project identity*/
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #f5ebe5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+}
+
+/* Keffiyeh Pattern - Top Left */
+.koufiyah-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.koufiyah-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Logo - Top Right */
+.logo-container {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #d8ccc4;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 3;
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #5a2e2e;
+    font-weight: 600;
+    margin-bottom: 70px;
+    letter-spacing: 0.5px;
+}
+
+/* Project Form */
+.project-form {
+    width: 100%;
+}
+
+/* Field Group */
+.field-group {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Field Label */
+.field-label {
+    background-color: #e8dad2;
+    color: #5a2e2e;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.field-label:hover {
+    background-color: #dcc9bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.field-label:active {
+    cursor: grabbing;
+}
+
+/* Field Input */
+.field-input {
+    padding: 14px 22px;
+    border: 2.5px solid #5a2e2e;
+    border-radius: 12px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    outline: none;
+    cursor: grab;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.field-input:hover {
+    border-color: #7a4242;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.field-input:focus {
+    border-color: #8b4e4e;
+    box-shadow: 0 0 0 3px rgba(90, 46, 46, 0.1);
+    cursor: text;
+}
+
+.field-input:active:not(:focus) {
+    cursor: grabbing;
+}
+
+/* Needs Section */
+.needs-wrapper {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.needs-header {
+    background-color: #e8dad2;
+    color: #5a2e2e;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 35px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.needs-header:hover {
+    background-color: #dcc9bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.needs-header:active {
+    cursor: grabbing;
+}
+
+.needs-content {
+    padding-left: 60px;
+}
+
+/* Need Item */
+.need-item {
+    display: grid;
+    grid-template-columns: 20px 120px 1fr;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.bullet {
+    color: #b0b0b0;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.need-name {
+    color: #b0b0b0;
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.need-input {
+    padding: 14px 22px;
+    border: 2.5px solid #5a2e2e;
+    border-radius: 12px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    outline: none;
+    cursor: grab;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.need-input:hover {
+    border-color: #7a4242;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.need-input:focus {
+    border-color: #8b4e4e;
+    box-shadow: 0 0 0 3px rgba(90, 46, 46, 0.1);
+    cursor: text;
+}
+
+.need-input:active:not(:focus) {
+    cursor: grabbing;
+}
+
+/* Button Container */
+.project-form .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+/* Donate Button */
+.donate-button {
+    background-color: #5a2e2e;
+    color: #ffffff;
+    padding: 16px 55px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(90, 46, 46, 0.25);
+}
+
+.donate-button:hover {
+    background-color: #6e3838;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(90, 46, 46, 0.35);
+}
+
+.donate-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(90, 46, 46, 0.3);
+}
+
+/* Dragging States */
+.draggable {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.dragging {
+    opacity: 0.7;
+    cursor: grabbing !important;
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+    z-index: 1000 !important;
+}
+
+.field-label.dragging,
+.needs-header.dragging {
+    background-color: #d4c4b8;
+}
+
+.field-input.dragging,
+.need-input.dragging {
+    border-color: #8b4e4e;
+    background-color: #fffef8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 60px 20px;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+
+    .koufiyah-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .logo-container {
+        width: 80px;
+        height: 80px;
+        top: 30px;
+        right: 20px;
+    }
+
+    .field-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .field-label {
+        text-align: center;
+    }
+
+    .needs-content {
+        padding-left: 20px;
+    }
+
+    .need-item {
+        grid-template-columns: 20px 1fr;
+        gap: 10px;
+    }
+
+    .need-name {
+        grid-column: 2;
+        margin-bottom: 10px;
+    }
+
+    .need-input {
+        grid-column: 2;
+    }
+
+    .project-form .button-container {
+        justify-content: center;
+    }
+
+    .donate-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .field-label,
+    .needs-header {
+        font-size: 1rem;
+    }
+
+    .donate-button {
+        font-size: 1.2rem;
+        padding: 14px 40px;
+    }
+}
+
+/*our obejcts */
+.our-objects {
+  background-color: #f5f5f5; 
+  background-position: center;
+  padding: 60px 20px;
+  text-align: left; 
+  width: 100%;
+  min-height: 300px;
+}
+
+.our-objects .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.our-objects h2 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 30px;
+  text-align: left; 
+}
+
+.our-objects p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  max-width: 800px;
+  margin: 0; 
+  text-align: left; 
+}
+  </style>
+</head>
+<body>
+
+  
+
+ 
+
+
+
+<!-- DELETE SECTION -->
+<section class="membership delete-section">
+    <div class="koufiyah">
+        <img src="images/kouffia.png" alt="">
+    </div>
+    <div class="membership-header">
+        <h2 class="membership-title">Association membre</h2>
+        <div class="flag-circle">
+            <img src="images/logo.svg" alt="logo" class="flag-icon">
+        </div>
+    </div>
+
+    <div class="validation-grid">
+        <div class="validation-card delete-card" data-index="0">
+            <img src="images/health.jpeg" alt="Member Image 1">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card delete-card" data-index="1">
+            <img src="images/education.jpeg" alt="Member Image 2">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card delete-card" data-index="2">
+            <img src="images/shcooling.jpeg" alt="Member Image 3">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card delete-card" data-index="3">
+            <img src="images/amusement.jpeg" alt="Member Image 4">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card delete-card" data-index="4">
+            <img src="images/housing.jpeg" alt="Member Image 5">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+
+        <div class="validation-card delete-card" data-index="5">
+            <img src="images/water.jpeg" alt="Member Image 6">
+            <button class="delete-btn">DELETE</button>
+            <div class="button-container">
+                <a href="#page-wrapper" class="show-btn">Show project details</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 
+   
+   
+    
+
+</body>
+</html>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Sélectionne toutes les cartes statiques
+    const showBtns = document.querySelectorAll(".show-btn");
+    const validateButtons = document.querySelectorAll(".delete-btn");
+
+    // Gestion clic sur Show project details
+    showBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Récupère l'ID du projet depuis le parent card
+            const card = e.target.closest(".delete-card");
+            const projectId = card.dataset.index; // ici on utilise data-index
+            localStorage.setItem("selectedProjectId", projectId);
+            window.location.href = "identity2.html";
+        });
+    });
+
+    // Gestion clic sur DELETE / validate
+    validateButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const card = e.target.closest(".delete-card");
+            const title = card.querySelector("img").alt || "ce projet";
+
+            // Notification
+            alert("❌ " + title + " est maintenant supprimé !");
+
+            // Marquer visuellement comme supprimé
+            card.classList.add("deleted");
+
+            // Désactiver le bouton
+            btn.disabled = true;
+        });
+    });
+});
+</script>

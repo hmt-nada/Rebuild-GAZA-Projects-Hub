@@ -1,0 +1,107 @@
+<div id="map" style="height: 600px;"></div>
+
+<!-- Conteneur pour afficher les détails du projet -->
+<div id="project-details" style="margin-top:20px; padding:10px; border:1px solid #ccc; border-radius:5px; background:#f9f9f9;">
+  <p>Cliquez sur un point rouge pour voir les besoins du projet</p>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Récupérer le domaine choisi depuis localStorage
+  const domain = localStorage.getItem("selectedDomain") || "health";
+
+  // Initialiser la carte centrée sur Gaza
+  const map = L.map('map').setView([31.5, 34.5], 12);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Localisations des villes
+  const gazaLocations = {
+    "Gaza City": { lat: 31.5, lng: 34.46 },
+    "Rafah": { lat: 31.28, lng: 34.25 },
+    "Khan Younis": { lat: 31.35, lng: 34.31 },
+    "Jabalia": { lat: 31.53, lng: 34.47 }
+  };
+
+  // Couleurs selon priorité
+  const priorityColors = {
+    "1": "red",
+    "2": "orange",
+    "3": "yellow",
+    "4": "green"
+  };
+
+  const detailsContainer = document.getElementById('project-details');
+
+  // Projets statiques avec au moins 4 par domaine
+  const allProjects = [
+    // HEALTH
+    { title: "Réparer hôpital central", location: "Gaza City", priority: "1", domain: "health", status:"Rejected",
+      needs: [{ name: "Médecins", type: "Humain", quantity_fulfilled: 2, quantity_needed: 5 }] },
+    { title: "Clinique mobile Rafah", location: "Rafah", priority: "2", domain: "health",status:"in progress",
+      needs: [{ name: "Infirmiers", type: "Humain", quantity_fulfilled: 3, quantity_needed: 6 }] },
+    { title: "Distribution vaccins", location: "Khan Younis", priority: "1", domain: "health",status:"Approved",
+      needs: [{ name: "Vaccins", type: "Matériel", quantity_fulfilled: 200, quantity_needed: 500 }] },
+    { title: "Réhabilitation centre santé", location: "Jabalia", priority: "3", domain: "health",status:"Rejected",
+      needs: [{ name: "Techniciens", type: "Humain", quantity_fulfilled: 1, quantity_needed: 4 }] },
+
+    // WATER
+    { title: "Forage puits Rafah", location: "Rafah", priority: "1", domain: "water",status:"in progress",
+      needs: [{ name: "Pompes", type: "Matériel", quantity_fulfilled: 1, quantity_needed: 3 }] },
+    { title: "Distribution eau Gaza", location: "Gaza City", priority: "2", domain: "water",status:"Completed",
+      needs: [{ name: "Bidons", type: "Matériel", quantity_fulfilled: 100, quantity_needed: 300 }] },
+    { title: "Réhabilitation canal Khan Younis", location: "Khan Younis", priority: "3", domain: "water",status:"in progress",
+      needs: [{ name: "Tuyaux", type: "Matériel", quantity_fulfilled: 20, quantity_needed: 50 }] },
+    { title: "Filtration eau Jabalia", location: "Jabalia", priority: "2", domain: "water",status:"Completed",
+      needs: [{ name: "Filtres", type: "Matériel", quantity_fulfilled: 5, quantity_needed: 10 }] },
+
+    // EDUCATION
+    { title: "Réhabilitation école Gaza", location: "Gaza City", priority: "1", domain: "education",status:"in progress",
+      needs: [{ name: "Professeurs", type: "Humain", quantity_fulfilled: 3, quantity_needed: 10 }] },
+    { title: "Distribution fournitures Rafah", location: "Rafah", priority: "2", domain: "education",status:"Completed",
+      needs: [{ name: "Sacs à dos", type: "Matériel", quantity_fulfilled: 30, quantity_needed: 100 }] },
+    { title: "Formation enseignants Khan Younis", location: "Khan Younis", priority: "3", domain: "education",status:"Approved",
+      needs: [{ name: "Formateurs", type: "Humain", quantity_fulfilled: 2, quantity_needed: 5 }] },
+    { title: "Réhabilitation bibliothèque Jabalia", location: "Jabalia", priority: "4", domain: "education",status:"Rejected",
+      needs: [{ name: "Livres", type: "Matériel", quantity_fulfilled: 40, quantity_needed: 100 }] },
+
+    // HOUSING
+    { title: "Construction maisons Gaza", location: "Gaza City", priority: "1", domain: "housing",status:"Approved",
+      needs: [{ name: "Ciment", type: "Matériel", quantity_fulfilled: 100, quantity_needed: 300 }] },
+    { title: "Réhabilitation appartements Rafah", location: "Rafah", priority: "2", domain: "housing",status:"Completed",
+      needs: [{ name: "Tuiles", type: "Matériel", quantity_fulfilled: 50, quantity_needed: 120 }] },
+    { title: "Réfection toits Khan Younis", location: "Khan Younis", priority: "3", domain: "housing",status:"in progress",
+      needs: [{ name: "Ouvriers", type: "Humain", quantity_fulfilled: 5, quantity_needed: 10 }] },
+    { title: "Distribution matériaux Jabalia", location: "Jabalia", priority: "4", domain: "housing",status:"Rejected",
+      needs: [{ name: "Bois", type: "Matériel", quantity_fulfilled: 15, quantity_needed: 40 }] }
+  ];
+
+  // Filtrer les projets selon le domaine choisi
+  const filteredProjects = allProjects.filter(p => p.domain === domain);
+
+  // Ajouter les markers cliquables avec couleur
+  filteredProjects.forEach(project => {
+    const loc = gazaLocations[project.location];
+    if (!loc) return;
+
+    const color = priorityColors[project.priority] || 'gray';
+
+    const marker = L.circleMarker([loc.lat, loc.lng], {
+      color: color,
+      fillColor: color,
+      radius: 12,
+      fillOpacity: 0.9
+    }).addTo(map);
+
+    // Affichage des besoins quand on clique
+    marker.on('click', () => {
+        localStorage.setItem("selectedProject", JSON.stringify(project));
+       window.location.href = "identity.html";
+    });
+  });
+
+</script>

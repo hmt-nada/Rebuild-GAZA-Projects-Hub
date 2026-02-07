@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rebuild Gaza Projects Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+
+<section class="page-wrapper">
+        <!-- Keffiyeh Pattern -->
+        <section class="koufiyah-container">
+            <img src="images/kouffia.png" alt="Keffiyeh Pattern">
+        </section>
+
+        <!-- Logo -->
+        <section class="logo-container">
+            <img src="images/logo.svg" alt="Palestine Flag">
+        </section>
+
+        <!-- Main Content -->
+        <section class="content-wrapper">
+            <h1 class="main-title">Project identity</h1>
+
+            <form class="project-form">
+                <!-- Name Project -->
+                <section class="field-group">
+                    <div class="field-label draggable">Name project</div>
+                    <input type="text" class="field-input draggable" disabled>
+                </section>
+
+                <!-- Location -->
+                <section class="field-group">
+                    <div class="field-label draggable">location</div>
+                    <input type="text" class="field-input draggable" disabled>
+                </section>
+
+                <!-- Status -->
+                <section class="field-group">
+                    <div class="field-label draggable">status</div>
+                    <input type="text" class="field-input draggable" disabled>
+                </section>
+
+                <!-- Needs Section -->
+                <section class="needs-wrapper">
+                    <div class="needs-header draggable">needs</div>
+                    
+                    <section class="needs-content">
+                        <!-- Human -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Human</span>
+                            <input type="text" class="need-input draggable" disabled>
+                        </section>
+
+                        <!-- Material -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Materiel</span>
+                            <input type="text" class="need-input draggable" disabled>
+                        </section>
+
+                        <!-- Money -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Money</span>
+                            <input type="text" class="need-input draggable" disabled>
+                        </section>
+                    </section>
+                </section>
+
+                <!-- Donate Button -->
+                <section class="button-container">
+                    <a href="donnate.html" type="button" class="donate-button">Donate</a>
+                </section>
+            </form>
+        </section>
+    </section>
+    <!-- Home icon WITHOUT link -->
+  <a href="main.html" class="home-icon" id="homeBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
+    </body>
+</html>
+<script>
+   const project = JSON.parse(localStorage.getItem("selectedProject"));
+
+  if (!project) {
+    alert("Aucun projet sélectionné");
+  } else {
+    // Champs principaux
+    const inputs = document.querySelectorAll(".field-input");
+    const needsInputs = document.querySelectorAll(".need-input");
+
+    // Remplir les champs
+    inputs[0].value = project.title;        // Name project
+    inputs[1].value = project.location;     // Location
+    inputs[2].value = project.status;     // Status (tu peux changer le label)
+
+    // Initialiser les besoins
+    let human = "";
+    let material = "";
+    let money = "";
+
+    project.needs.forEach(need => {
+      const text = `${need.name} (${need.quantity_fulfilled}/${need.quantity_needed})`;
+
+      if (need.type === "Humain") human += text + " ";
+      if (need.type === "Matériel") material += text + " ";
+      if (need.type === "Money") money += text + " ";
+    });
+
+    // Remplir les besoins
+    needsInputs[0].value = human;
+    needsInputs[1].value = material;
+    needsInputs[2].value = money;
+  }
+</script>

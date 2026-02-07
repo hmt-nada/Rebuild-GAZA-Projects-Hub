@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modify Project - Rebuild Gaza Projects Hub</title>
+    <link rel="stylesheet" href="Add association.css">
+    <!-- Ajout de la police Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Image du Keffieh en haut à gauche -->
+    <div class="kufiya-corner">
+        <!-- Utilisation d'une image locale avec un nom simple -->
+        <img src="images/kouffia.png" alt="Kufiya Pattern" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Logo drapeau palestinien en haut à droite -->
+    <div class="flag-logo">
+        <!-- Utilisation d'une image locale avec un nom simple -->
+        <img src="images/logo.svg" alt="Palestine Flag" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Conteneur principal -->
+    <div class="main-container">
+        <h1 class="page-title">Association membre</h1>
+
+        <!-- Titre Add project -->
+        <div class="project-header">
+            <h2>Modify project</h2>
+        </div>
+
+        <!-- Formulaire -->
+        <form id="projectForm" class="project-form">
+            <!-- Name project -->
+            <div class="form-group">
+                <input type="text" name="name_project" class="form-input" placeholder="Name project (the old one)" required>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <input type="text" name="description" class="form-input" placeholder="Description" required>
+            </div>
+
+            <!-- Field -->
+            <div class="form-group">
+                <input type="text" name="field" class="form-input" placeholder="Field" required>
+            </div>
+
+            <!-- Localisation -->
+            <div class="form-group">
+                <input type="text" name="localisation" class="form-input" placeholder="Localisation" required>
+            </div>
+
+            <!-- Status et Upload Image sur la même ligne -->
+            <div class="status-upload-row">
+                <!-- Status -->
+                <div class="form-group">
+                    <select name="status" class="form-select" required>
+                        <option value="" disabled selected>Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <!-- Upload Image -->
+                <div class="form-group">
+                    <label for="image-upload" class="upload-btn">upload Image</label>
+                    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <!-- Needs Section -->
+            <h3 class="needs-title">Needs</h3>
+
+            <!-- Human -->
+            <div class="need-section">
+                <h4 class="need-category">Human</h4>
+                <div class="need-inputs">
+                    <input type="text" name="human_type" class="need-input" placeholder="Type of needs" required>
+                    <input type="number" name="human_quantity" class="need-input" placeholder="Quantity" min="1" required>
+                </div>
+            </div>
+
+            <!-- Materiel -->
+            <div class="need-section">
+                <h4 class="need-category">Materiel</h4>
+                <div class="need-inputs">
+                    <input type="text" name="materiel_type" class="need-input" placeholder="Type of needs" required>
+                    <input type="number" name="materiel_quantity" class="need-input" placeholder="Quantity" min="1" required>
+                </div>
+            </div>
+
+            <!-- Volunteer -->
+              <div class="need-section">
+                <h4 class="need-category">Money</h4>
+                <div class="need-inputs">
+                    <input type="number" name="volunteer_quantity" class="need-input" placeholder="Quantity" min="1" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-container">
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Icône maison en bas à droite - lien vers page d'accueil fictive -->
+    <div class="home-icon">
+        <a href="main.html" id="homeLink">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </a>
+    </div>
+
+    <script>
+      
+document.addEventListener("DOMContentLoaded", () => {
+  const projectForm = document.getElementById("projectForm");
+
+  projectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // 🔴 Vérifier uniquement les champs obligatoires
+    const requiredFields = [
+      'input[name="name_project"]',
+      'input[name="description"]',
+      'input[name="field"]',
+      'input[name="localisation"]',
+      'select[name="status"]'
+    ];
+
+    let allFilled = true;
+
+    requiredFields.forEach(selector => {
+      const field = document.querySelector(selector);
+      if (!field.value.trim()) {
+        field.style.borderColor = "#e74c3c"; // Rouge si vide
+        allFilled = false;
+      } else {
+        field.style.borderColor = "#2d1810"; // Normal si rempli
+      }
+    });
+
+    if (!allFilled) {
+      alert("❌ Veuillez remplir tous les champs obligatoires du projet.");
+      return;
+    }
+
+    // ✅ Affichage statique de validation
+    alert("✅ Projet modifié avec succès !");
+    
+    // (optionnel) reset formulaire
+    projectForm.reset();
+  });
+});
+</script>
+
+    
+</body>
+</html>

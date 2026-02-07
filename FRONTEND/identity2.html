@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rebuild Gaza Projects Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+
+<section class="page-wrapper">
+        <!-- Keffiyeh Pattern -->
+        <section class="koufiyah-container">
+            <img src="images/kouffia.png" alt="Keffiyeh Pattern">
+        </section>
+
+        <!-- Logo -->
+        <section class="logo-container">
+            <img src="images/logo.svg" alt="Palestine Flag">
+        </section>
+
+        <!-- Main Content -->
+        <section class="content-wrapper">
+            <h1 class="main-title">Project identity</h1>
+
+            <form class="project-form">
+                <!-- Name Project -->
+                <section class="field-group">
+                    <div class="field-label draggable">Name project</div>
+                    <input type="text" class="field-input draggable">
+                </section>
+
+                <!-- Location -->
+                <section class="field-group">
+                    <div class="field-label draggable">location</div>
+                    <input type="text" class="field-input draggable">
+                </section>
+
+                <!-- Status -->
+                <section class="field-group">
+                    <div class="field-label draggable">status</div>
+                    <input type="text" class="field-input draggable">
+                </section>
+
+                <!-- Needs Section -->
+                <section class="needs-wrapper">
+                    <div class="needs-header draggable">needs</div>
+                    
+                    <section class="needs-content">
+                        <!-- Human -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Human</span>
+                            <input type="text" class="need-input draggable">
+                        </section>
+
+                        <!-- Material -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Materiel</span>
+                            <input type="text" class="need-input draggable">
+                        </section>
+
+                        <!-- Money -->
+                        <section class="need-item">
+                            <span class="bullet">●</span>
+                            <span class="need-name">Money</span>
+                            <input type="text" class="need-input draggable">
+                        </section>
+                    </section>
+                </section>
+
+            </form>
+        </section>
+    </section>
+    <!-- Home icon WITHOUT link -->
+  <a href="main.html" class="home-icon" id="homeBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
+    </body>
+</html>
+<script>
+    let id = localStorage.getItem("selectedProjectId");
+    const projects = [
+    { 
+        id: 1, 
+        title: "Projet Santé", 
+        location: "Gaza City", 
+        status: "Pending", 
+        needs: { human: "Doctors", material: "Medicines", money: "$5000" },
+        image: "images/health.jpeg" // Image 1
+    },
+    { 
+        id: 2, 
+        title: "Projet Humanitaire", 
+        location: "Deir al-Balah", 
+        status: "Pending", 
+        needs: { human: "Volunteers", material: "Clothes", money: "$2000" },
+        image: "images/medical2.png" // Image que tu as uploadé (dc1ea52f-bdae-473e-87cf-728c9f1075ea.png)
+    },
+    { 
+        id: 3, 
+        title: "Projet Éducation", 
+        location: "Khan Younis", 
+        status: "Pending", 
+        needs: { human: "Teachers", material: "Books", money: "$3000" },
+        image: "images/education.jpeg" // Image 2
+    },
+    { 
+        id: 4, 
+        title: "Projet Enfance", 
+        location: "Gaza City", 
+        status: "Pending", 
+        needs: { human: "Teachers", material: "Toys", money: "$1500" },
+        image: "images/amusement.jpeg" // Image 4
+    },
+    { 
+        id: 5, 
+        title: "Projet Logement", 
+        location: "Rafah", 
+        status: "Pending", 
+        needs: { human: "Workers", material: "Cement", money: "$10000" },
+        image: "images/housing.jpeg" // Image 5
+    },
+    { 
+        id: 6, 
+        title: "Projet Eau", 
+        location: "Beit Lahia", 
+        status: "Pending", 
+        needs: { human: "Engineers", material: "Pipes", money: "$4000" },
+        image: "images/water.jpeg" // Image 6
+    },
+];
+// Convertir l'ID en nombre (localStorage renvoie une string)
+    id = parseInt(id);
+
+    // Chercher le projet correspondant
+    const project = projects.find(p => p.id === id);
+
+    // Vérifier si le projet existe
+    if (project) {
+        // Récupérer les inputs du formulaire
+        const inputs = document.querySelectorAll(".project-form .field-input");
+        const needsInputs = document.querySelectorAll(".project-form .need-input");
+
+        // Remplir les champs principaux
+        inputs[0].value = project.title;       // Name project
+        inputs[1].value = project.location;    // Location
+        inputs[2].value = project.status;      // Status
+
+        // Remplir les besoins
+        needsInputs[0].value = project.needs.human;    // Human
+        needsInputs[1].value = project.needs.material; // Material
+        needsInputs[2].value = project.needs.money;    // Money
+    } else {
+        console.log("Projet non trouvé pour l'ID :", id);
+    }
+
+</script>
